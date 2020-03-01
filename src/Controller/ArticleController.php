@@ -14,11 +14,12 @@ class ArticleController extends AbstractController
      * @return Response
      */
     public function homePage() {
-        return new Response("Hello Symfony Respone Object");
+        return $this->render('article/homepage.html.twig');
+        // return new Response("Hello Symfony Respone Object");
     }
 
     /**
-     * @Route("/news/{slug}")
+     * @Route("/news/{slug}", name="article_show")
      * @return Response
      */
     public function show($slug) {
