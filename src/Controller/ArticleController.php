@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,8 +42,13 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/news/{slug}/like", name="like_count", methods={"POST"})
+     * @param $slug
+     * @param LoggerInterface $logger
+     * @return JsonResponse
      */
-    public function toogleLikeCount($slug) {
+    public function toogleLikeCount($slug, LoggerInterface $logger) {
+
+        $logger->info('toggleLikeCount');
         return new JsonResponse(
             ['hearts' => rand(5, 100)]
         );
