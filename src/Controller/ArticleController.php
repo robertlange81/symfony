@@ -16,4 +16,12 @@ class ArticleController
     public function homePage() {
         return new Response("Hello Symfony Respone Object");
     }
+
+    /**
+     * @Route("/news/{slug}")
+     * @return Response
+     */
+    public function show($slug) {
+        return new Response("Slug is $slug");
+    }
 }
