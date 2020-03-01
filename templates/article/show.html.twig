@@ -16,7 +16,7 @@
 </ul>
 
       Like Number: <span class="js-like-article-count">5</span>
-      <a href="#" class="js-like-article">I Like</a>
+      <a href="{{ path('like_count', {slug: slug}) }}" class="js-like-article">I Like</a>
 {% endblock %}
 
 {% block javascripts %}
