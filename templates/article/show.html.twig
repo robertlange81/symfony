@@ -14,4 +14,12 @@
       <li>{{ comment }}</li>
    {% endfor %}
 </ul>
+
+      Like Number: <span class="js-like-article-count">5</span>
+      <a href="#" class="js-like-article">I Like</a>
+{% endblock %}
+
+{% block javascripts %}
+      {{ parent() }}
+      <script src="{{ asset('js/article_show.js') }}"></script>
 {% endblock %}

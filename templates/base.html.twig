@@ -10,14 +10,19 @@
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        {% endblock %}
 
         <br />
         <br />
         <br />
         <br />
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="{{ path('app_homepage') }}">Footer Homepage</a>
-    </div>
+        <footer>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ path('app_homepage') }}">Footer Homepage</a>
+            </div>
+        </footer>
     </body>
+
 </html>
