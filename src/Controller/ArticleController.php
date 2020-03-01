@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 class ArticleController extends AbstractController
 {
@@ -22,9 +23,14 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/news/{slug}", name="article_show")
-     * @return Response
+     * @param $slug
+     * @param Environment $twigEnvironment
+     * @return Respone
+     * @throws \Twig\Error\LoaderError
+     * @throws \Twig\Error\RuntimeError
+     * @throws \Twig\Error\SyntaxError
      */
-    public function show($slug) {
+    public function show($slug, Environment $twigEnvironment) {
         $comments = [
             "Kommentar 1",
             "Kommentar 2",
@@ -33,11 +39,13 @@ class ArticleController extends AbstractController
 
         dump($slug, $this);
 
-        return $this->render('article/show.html.twig', [
+        $html = $twigEnvironment->render('article/show.html.twig', [
             'title' => ucwords(str_replace('-', '', $slug)),
             'slug' => $slug,
             'comments' => $comments
         ]);
+
+        return new Response($html);
     }
 
     /**
